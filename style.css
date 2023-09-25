@@ -6,6 +6,82 @@
     --multiplicar: 100;
 }
 
+@keyframes moverDerecha {
+    0% { bottom: 0; }
+    100% { bottom: 50%; }
+}
+
+button.transition {
+    transition: all 2s ease;
+    background-color: red;
+    color:white
+}
+
+button.transition:hover {
+    transition: all 2s ease;
+    background-color: blue;
+    color: black;
+}
+
+#media-queries {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: red;
+    margin-bottom: 0;
+    color: white;
+    padding: 10px;
+    animation-name: moverDerecha;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count:0;
+    animation-direction: alternate;
+    background-image: url('mario2.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+}
+
+@media(max-width: 360px) {
+
+    #media-queries {
+        height: 200px;
+        background-color: orange;
+        margin-bottom: 50px;
+        color: white;
+        padding: 30px;
+        font-size: 14pt;
+        background-image: url('mario.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+}
+
+
+@media(min-width: 360px) and (max-width: 800px) {
+
+    #media-queries {
+        
+        height: 200px;
+        background-color: blue;
+        margin-bottom: 50px;
+        color: white;
+        padding: 30px;
+        font-size: 14pt;
+    }
+
+
+    div {
+        height: 500px;
+    }
+
+}
+
 #mi-div {
     height: 100px;
     border: 20px solid #cccccc;
