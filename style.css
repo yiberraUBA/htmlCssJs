@@ -1,3 +1,5 @@
+
+
 :root {
     --color-titulo: red;
     --color-especial: blue;
@@ -5,6 +7,7 @@
     --sumar-px: 200px;
     --multiplicar: 100;
 }
+
 
 @keyframes moverDerecha {
     0% { bottom: 0; }
@@ -23,8 +26,36 @@ button.transition:hover {
     color: black;
 }
 
+button.sin-transition {
+    
+    background-color: red;
+    color:white
+}
+
+button.sin-transition:hover {
+
+    background-color: blue;
+    color: black;
+}
+
+button.sin-transition:disabled {
+    color: gray;
+}
+
+.checkbox:checked {
+
+}
+
+.input-text:focus {
+
+}
+
+.input-select:disabled {
+
+}
+
 #media-queries {
-    position: relative;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -37,12 +68,14 @@ button.transition:hover {
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
     animation-delay: 0s;
-    animation-iteration-count:0;
+    animation-iteration-count:infinite;
     animation-direction: alternate;
     background-image: url('mario2.png');
     background-repeat: no-repeat;
     background-position: top left;
     background-size: cover;
+    font-family: 'Croissant One', cursive;
+    font-size: 24pt;
 }
 
 @media(max-width: 360px) {
@@ -149,13 +182,13 @@ p a {
     color:red;
 }
 
+ol li {
+    color: red;
+}
+
 ol li a {
-    color: blue;
-}
-
-.lista-1 {
-
-}
+    background-color: blue;
+    color:white;
 
 .first-li a {
     color: var(--color-especial);
