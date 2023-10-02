@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery/jquery-3.7.1.js"></script>
+    <style>
+        .color-red {
+            color:red;
+        }
+
+        .color-red:hover {
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <form id="formulario">
+                <!-- Botón -->
+                <button id="boton_saludar" type="submit">
+                    Saludar a
+                </button>
+                <!-- Input text -->
+                <input type="text" id="input_text" />
+                <!-- Div de resultado de la función -->
+                <div id="resultado"></div>
+                
+            </form>
+
+
+            <button id="traer_data">Consultar data</button>
+
+            <div class="boton">
+                Div
+            </div>
+            <div class="boton">
+                Div
+            </div>
+            <div class="boton">
+                Div
+            </div>
+            <div class="boton">
+                Div
+            </div>
+            <div class="boton">
+                Div
+            </div>
+
+            <button id="ocultar">Ocultar</button>
+            <button id="mostrar">Mostrar</button>
+            <button id="fadeIn">Fade in</button>
+            <button id="fadeOut">Fade out</button>
+            <button id="agregarClase">Agregar clase</button>
+            <button id="removerClase">Remover clase</button>
+
+            <ul id="lista">
+                <li>Elemento 1</li>
+                <li>Elemento 2</li>
+                <li>Elemento 3</li>
+                <li>Elemento 4</li>
+                <li>Elemento 5</li>
+            </ul>
+
+            <button id="agregarALista">Agregar</button>
+        </section>
+    </main>
+
+    <script>
+
+        // Función que se utilizará en el cuerpo HTML
+        function saludar(nombre){
+            return 'Hola ' + nombre;
+        }
+
+        // Agrego un listener al boton saludar que cuando el usuario hace click agrega la cadena de texto resuelta al div resultado
+        $('#boton_saludar').on('click', function() {
+            $('#resultado').html('<strong style="color:red">'+saludar($('#input_text').val())+'</strong>');
+        })
+
+        $('.boton').css('color', 'red');
+
+        $('#ocultar').on('click', function(){
+            $('.boton').hide(2000);
+        })
+
+        $('#mostrar').on('click', function(){
+            $('.boton').show(2000);
+        })
+
+        $('#fadeIn').on('click', function(){
+            $('.boton').toggle(3000);
+            console.log('termino click');
+        })
+
+        $('#fadeOut').on('click', function(){
+            $('.boton').fadeOut(3000);
+        })
+
+        $('#input_text').on('change', function(){
+            console.log($('#input_text').val());
+        })
+
+        $('#agregarClase').on('click', function(){
+            $('#resultado').addClass('color-red');
+        })
+
+        $('#removerClase').on('click', function(){
+            $('#resultado').removeClass('color-red');
+        })
+
+        $('#agregarALista').on('click', function(){
+            $('#lista').prepend('<li>Nuevo elemento</li>');
+        })
+
+        $('#traer_data').on('click', function(){
+            $.ajax({
+                url: 'data.json',
+                success: function(res){
+                    let nombre = res.nombre;
+                    let apellido = res.apellido;
+
+                    $('#resultado').html('Su nombre es '+nombre+' y su apellido es '+apellido);
+                    
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            })
+        })
+
+        /*
+        $('#formulario').validate({
+            rules: {
+                input_text: {
+                    required: true,
+                    minLength: 3
+                }
+            },
+            messages: {
+                input_text: {
+                    required: 'Por favor ingrese su nombre',
+                    minLength: 'La cantidad de caracteres es 3'
+                }
+            },
+            submitHandler: function(form){
+
+            }
+        })
+        */
+
+        
+
+
+        /*
+
+        // Obtengo los elementos del DOM por su ID
+        var boton = document.getElementById('boton_saludar');
+        var input_text = document.getElementById('input_text');
+        var resultado = document.getElementById('resultado');
+
+        // Asocio un manejador de eventos al evento 'click' del botón
+        // En este bloque de código <script> la función saludar no está declarada, está declarada
+        // en el archivo script.js que estoy incluyendo dentro del elemento <head> y que es accesible en el documento
+        boton.addEventListener('click', function(){
+            resultado.innerHTML = '<strong style="color:red">'+saludar(input_text.value)+'</strong>';
+        })
+
+        // Asocio otro manejador de eventos al evento 'change' de mi input de tipo text
+        input_text.addEventListener('change', function(){
+            console.log(input_text.value);
+        })
+        */
+
+    </script>
+</body>
+</html>
