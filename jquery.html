@@ -33,19 +33,19 @@
 
             <button id="traer_data">Consultar data</button>
 
-            <div class="boton">
+            <div class="texto">
                 Div
             </div>
-            <div class="boton">
+            <div class="texto">
                 Div
             </div>
-            <div class="boton">
+            <div class="texto">
                 Div
             </div>
-            <div class="boton">
+            <div class="texto">
                 Div
             </div>
-            <div class="boton">
+            <div class="texto">
                 Div
             </div>
 
@@ -55,6 +55,8 @@
             <button id="fadeOut">Fade out</button>
             <button id="agregarClase">Agregar clase</button>
             <button id="removerClase">Remover clase</button>
+
+            <button id="ocultame">Ocultame</button>
 
             <ul id="lista">
                 <li>Elemento 1</li>
@@ -81,23 +83,29 @@
             $('#resultado').html('<strong style="color:red">'+saludar($('#input_text').val())+'</strong>');
         })
 
-        $('.boton').css('color', 'blue');
+        $('.texto').css('color', 'blue');
 
         $('#ocultar').on('click', function(){
-            $('.boton').hide(2000);
+            $('.texto').hide(2000);
+        })
+
+        $('#ocultame').on('click', function(){
+            $(this).text('Listo!');
+            $(this).hide(2000);
+
         })
 
         $('#mostrar').on('click', function(){
-            $('.boton').show(2000);
+            $('.texto').show(2000);
         })
 
         $('#fadeIn').on('click', function(){
-            $('.boton').toggle(3000);
+            $('.texto').toggle(3000);
             console.log('termino click');
         })
 
         $('#fadeOut').on('click', function(){
-            $('.boton').fadeOut(3000);
+            $('.texto').fadeOut(3000);
         })
 
         $('#input_text').on('change', function(){
