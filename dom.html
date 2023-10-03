@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>
+            My title
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="jquery/jquery-3.7.1.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>
+                        Solicitud de datos
+                    </h1>
+                    <form id="formulario">
+                        <label>
+                            Nombre<br>
+                            <input type="text" name="nombre" id="nombre">
+                        </label>
+                        <label>
+                            Apellido<br>
+                            <input type="apellido" name="apellido" id="apellido">
+                        </label>
+                    </form>
+                    <button id="enviar">
+                        Enviar formulario
+                    </button>
+                    <div id="resultado"></div>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Github</h1>
+                    <input type="text" id="usuario" placeholder="Usuario" />
+                    <button id="consultar_github">
+                        Consultar Github
+                    </button>
+                    <button id="borrar_github">
+                        Borrar Github
+                    </button>
+                    <button id="async">
+                        Timeout
+                    </button>
+                    <ul id="resultado_github"></ul>
+                </div>
+            </div>
+        </div>
+        
+
+        <script>
+            $('#consultar_github').on('click', function(){
+                var usuario = $('#usuario').val();
+                var url = 'https://api.github.com/users/' + usuario + '/repos';
+                $.get(url, function(response){
+                    response.map(function(repo){
+                        $('#resultado_github').append('<li>' + repo.full_name + ' ---> ' + repo.html_url + '</li>');
+                    });
+                });
+            });
+
+            $('#async').on('click',function(){
+                setTimeout(function(){
+                    console.log('Finalizada async')
+                }, 10000);
+            })
+
+            $('#borrar_github').on('click', function(){
+                $('#resultado_github').html('');
+            })
+
+
+
+            $('#enviar').on('click', function(){
+
+                var nombre = $('#nombre').val();
+                var apellido = $('#apellido').val();
+
+                $.ajax(
+                    {
+                        url: 'https://mocki.io/v1/02ed3ccf-2a32-4cc1-b8a5-42c0dc8e8699',
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function(response){
+
+                            if (response.nombre == nombre && response.apellido == apellido){
+                                $('#resultado').html('<div class="alert alert-success">Acceso permitido</div>');
+                            } else {
+                                $('#resultado').html('<div class="alert alert-danger">No coincide el usuario</div>');
+                            }
+                            
+                        },
+                        error: function(error){
+                            $('#resultado').html('<div class="alert alert-danger">Error de servidor</div>');
+                        }
+                    }
+                )
+            });
+            
+        </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    </body>
+</html>

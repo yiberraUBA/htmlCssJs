@@ -64,7 +64,8 @@
                 <li>Elemento 5</li>
             </ul>
 
-            <button id="agregarALista">Agregar</button>
+            <button id="agregarALista1">Agregar al principio</button>
+            <button id="agregarALista2">Agregar al final</button>
         </section>
     </main>
 
@@ -80,7 +81,7 @@
             $('#resultado').html('<strong style="color:red">'+saludar($('#input_text').val())+'</strong>');
         })
 
-        $('.boton').css('color', 'red');
+        $('.boton').css('color', 'blue');
 
         $('#ocultar').on('click', function(){
             $('.boton').hide(2000);
@@ -111,8 +112,12 @@
             $('#resultado').removeClass('color-red');
         })
 
-        $('#agregarALista').on('click', function(){
+        $('#agregarALista1').on('click', function(){
             $('#lista').prepend('<li>Nuevo elemento</li>');
+        })
+
+        $('#agregarALista2').on('click', function(){
+            $('#lista').append('<li>Nuevo elemento</li>');
         })
 
         $('#traer_data').on('click', function(){
@@ -122,7 +127,7 @@
                     let nombre = res.nombre;
                     let apellido = res.apellido;
 
-                    $('#resultado').html('Su nombre es '+nombre+' y su apellido es '+apellido);
+                    $('#resultado').html('<b>Su nombre es '+nombre+' y su apellido es '+apellido+'</b>');
                     
                 },
                 error: function(error){
