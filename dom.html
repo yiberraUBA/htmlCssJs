@@ -51,6 +51,18 @@
                 </div>
             </div>
         </div>
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button id="json">
+                        Traer info
+                    </button>
+                    <div id="resultado_json"></div>
+                </div>
+            </div>
+        </div>
         
 
         <script>
@@ -74,7 +86,17 @@
                 $('#resultado_github').html('');
             })
 
-
+            $('#json').on('click', function(){
+                $.ajax({
+                    url: 'Json.json',
+                    method: 'GET',
+                    success: function(response){
+                        console.log(response);
+                        var descripcion = "Su nombre es " + response.nombre + " " + response.apellido + ", su edad es " + response.edad + " y sus intereses de programación son: " + response.intereses.programacion.join(', ')
+                        $('#resultado_json').html(descripcion);
+                    }
+                })
+            })
 
             $('#enviar').on('click', function(){
 
